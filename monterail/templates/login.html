@@ -1,0 +1,7 @@
+<div style="color:red" ng-if="!!loginErrorMsg" ng-bind="loginErrorMsg"></div>
+<form name="loginForm" ng-submit="submit()">
+	<span> Username: <input ng-model="username" ui-validate="{'notEmpty': validators.notEmpty }"> </span><br>
+	<span> Password: <input ng-model="password"> </span><br>
+	
+	<input type="submit">
+</form>

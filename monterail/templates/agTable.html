@@ -1,0 +1,12 @@
+<table>
+	<thead>
+		<tr>
+			<td ng-repeat="column in columns" ng-bind="column.label"></td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="row in rows">
+			<td ng-repeat="column in columns" ng-bind="row[column.id]"></td>
+		</tr>
+	</tbody>
+</table>
