@@ -22,7 +22,7 @@ angular.module('monterail.test').service('auth',
 	return {
 	
 		loginUser: loginUserFn,
-		isUserLoggedL: isUserLoggedFn
+		isUserLogged: isUserLoggedFn
 	
 	}
 	

@@ -1,11 +1,16 @@
 angular.module('monterail.test').service('utilities', function(){
 	
-	function notEmpty(value){
+	function notEmptyFn(value){
 		return value != null && value != '';
+	}
+	
+	function isNumberFn(value){
+		return !isNaN(value);
 	}
 	
 	
 	return{
-		notEmpty: notEmpty
+		notEmpty: notEmptyFn,
+		isNumber: isNumberFn
 	}
 });

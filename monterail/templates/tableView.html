@@ -8,29 +8,18 @@
                 </div>
                 <form class="navbar-form navbar-left" role="search">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
+                        <input type="text" class="form-control" placeholder="Search" ng-model="searchExpr">
                     </div>
                 </form>
+				<form class="navbar-form navbar-right"> 
+					<input ng-model="newUserName" type="text">  
+					<button class="btn btn-default" ng-click="addUser()">Add user</button>
+				</form>
             </div>
         </nav>
         <!-- Table -->
-        <ag-table class="table">
+        <ag-table table-columns="headers" table-rows="userList" table-rows-visible="5" table-filter="searchExpr">
             
     </div>
-    <ul class="pagination">
-        <li class="disabled"><a href="#">«</a>
-        </li>
-        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a>
-        </li>
-        <li><a href="#">2</a>
-        </li>
-        <li><a href="#">3</a>
-        </li>
-        <li><a href="#">4</a>
-        </li>
-        <li><a href="#">5</a>
-        </li>
-        <li><a href="#">»</a>
-        </li>
-    </ul>
+    
 </div>

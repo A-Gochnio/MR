@@ -1,12 +1,30 @@
-<table>
+<table class="table" >
 	<thead>
 		<tr>
-			<td ng-repeat="column in columns" ng-bind="column.label"></td>
+			<td class="btn btn-default"
+				ng-repeat="column in columns" ng-bind="column.label"
+				ng-click="reorder(column.id)"></td>
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="row in rows">
+		<tr ng-repeat="row in paginated = (filteredRows = (rows | tableRowFilter:searchExpr | orderBy:orderId:orderReverse) | paginationFilter:currentPage:rowsPerPage) track by $index">
 			<td ng-repeat="column in columns" ng-bind="row[column.id]"></td>
 		</tr>
 	</tbody>
 </table>
+<ul class="pagination">
+	<li ng-class="{ 'disabled': currentPage == 0 }"
+		ng-click="prevPage()">
+		<a>«</a>
+	</li>
+	
+	<li ng-repeat="page in pages track by $index"
+		ng-class="{ 'active': $index == currentPage }"
+		ng-click="selectPage($index)">
+		<a>{{ $index }}<span ng-if="page == currentPage" class="sr-only">(current)</span></a>
+	</li>
+	<li ng-class="{ 'disabled': currentPage == maxPages-1 }"
+		ng-click="nextPage()">
+		<a>»</a>
+	</li>
+</ul>

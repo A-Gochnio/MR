@@ -19,9 +19,23 @@ angular.module('monterail.test').service('storage', [function(){
 	var getLoggedUserFn = function(){
 		return retrieveObject('currentUser');
 	}
+	
+	var getUserListFn = function(){
+		var userlist = retrieveObject('userList');
+		if(!userlist){
+			userlist = [];
+		}
+		return userlist;
+	}
+	
+	var storeUserListFn = function(userlist){
+		storeObject('userList', userlist);
+	}
 		
 	return {
 		storeLoggedUser: storeLoggedUserFn,
-		getLoggedUser: getLoggedUserFn
+		getLoggedUser: getLoggedUserFn,
+		getUserList: getUserListFn,
+		storeUserList: storeUserListFn
 	}
 }]);
