@@ -15,10 +15,15 @@
 					<input ng-model="newUserName" type="text">  
 					<button class="btn btn-default" ng-click="addUser()">Add user</button>
 				</form>
+				<button class="btn btn-default" ng-click="logout()">Logout</button> 
             </div>
         </nav>
         <!-- Table -->
-        <ag-table table-columns="headers" table-rows="userList" table-rows-visible="5" table-filter="searchExpr">
+        <ag-table 	table-columns="headers" 
+					table-rows="userList" 
+					table-rows-visible="5" 
+					table-filter="searchExpr"
+					table-is-row-highlighted="isCurrentUser(row)">
             
     </div>
     

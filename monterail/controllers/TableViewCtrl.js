@@ -1,4 +1,4 @@
-angular.module('monterail.test').controller('TableCtrl', 
+angular.module('monterail.test').controller('TableViewCtrl', 
 	['$scope', 'auth', '$state', 'userList',function($scope, authService, $state, userList){
 		
 		if(!authService.isUserLogged()){
@@ -21,7 +21,15 @@ angular.module('monterail.test').controller('TableCtrl',
 			$scope.userList = usrs;
 		});
 		
+		$scope.logout = function(){
+			authService.logUserOut();
+			$state.go('login');
+		}
 		
+		$scope.isCurrentUser = function(row){
+			var logged = authService.getLoggedUser();
+			return logged.username == row.name;
+		}
 		
 	
 }]);

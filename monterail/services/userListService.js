@@ -9,6 +9,13 @@ angular.module('monterail.test').service('userList', ['storage', '$q', '$timeout
 				views: 123,
 				likes: 52,
 				createdAt: new Date()
+			},
+			{
+				id:1,
+				name: 'admin',
+				views: 0,
+				likes: 666,
+				createdAt: new Date(0)
 			});
 		}
 		return userlist;

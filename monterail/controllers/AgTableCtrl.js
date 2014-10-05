@@ -41,9 +41,10 @@ angular.module('monterail.test').controller('AgTableCtrl',
 			$scope.currentPage = 0;
 		}
 		
-		/*$scope.getNumber = function(i){
-			return new Array(i);
-		}*/
+		$scope.isRowHighlighted = function(row){
+			var i = $scope.isRowHighlightedCallback({ row : row });
+			return i;
+		}
 		
 		$scope.$watchCollection('rows', function(rows){
 		

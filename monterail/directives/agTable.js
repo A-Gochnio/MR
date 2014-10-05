@@ -10,7 +10,8 @@ angular.module('monterail.test').directive('agTable', function(){
 			columns: '=tableColumns',
 			rows: '=tableRows',
 			searchExpr: '=tableFilter',
-			rowsPerPage: '@tableRowsVisible'
+			rowsPerPage: '@tableRowsVisible',
+			isRowHighlightedCallback: '&tableIsRowHighlighted'
 		},
 		controller: 'AgTableCtrl'
 	}

@@ -13,6 +13,6 @@ angular.module('monterail.test', ['ui.router', 'ui.utils'])
 		.state('table', {
 			url: '/table',
 			templateUrl: 'monterail/templates/tableView.html',
-			controller: 'TableCtrl'
+			controller: 'TableViewCtrl'
 		})
 }])

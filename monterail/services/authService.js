@@ -1,15 +1,24 @@
-angular.module('monterail.test').service('auth', 
-	['storage', '$q', function(storage, $q){
+angular.module('monterail.test').service('auth',
+	['storage', 'userList','$q', function(storage, userList, $q){
 	
 	var loginUserFn = function(username, password){
 		var deferred = $q.defer();
 		
-		if(password == 'monterail'){
-			storage.storeLoggedUser({ username: username });
-			deferred.resolve();
-		} else {
-			deferred.reject();
-		}
+		var storedUsers = userList.getUsers().then(function success(storedUsers){
+			angular.forEach(storedUsers, function(user){
+				if(user.name == username){
+					if(password == 'showoff'){
+						storage.storeLoggedUser({ username: username });
+						deferred.resolve();
+					} else {
+						deferred.reject('Password is wrong. Should be: "showoff" ')
+					}
+				}
+			});
+			deferred.reject('No such user');
+		}, function errorHandler(){
+			deferred.reject('No such user');
+		});
 		
 		return deferred.promise;
 	}
@@ -19,10 +28,19 @@ angular.module('monterail.test').service('auth',
 		return isLogged;
 	}
 	
+	var logUserOutFn = function(){
+		storage.storeLoggedUser(null);
+	}
+	
+	var getLoggedUserFn = function(){
+		return storage.getLoggedUser();
+	}
 	return {
 	
 		loginUser: loginUserFn,
-		isUserLogged: isUserLoggedFn
+		isUserLogged: isUserLoggedFn,
+		logUserOut: logUserOutFn,
+		getLoggedUser: getLoggedUserFn
 	
 	}
 	

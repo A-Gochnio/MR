@@ -7,7 +7,8 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="row in paginated = (filteredRows = (rows | tableRowFilter:searchExpr | orderBy:orderId:orderReverse) | paginationFilter:currentPage:rowsPerPage) track by $index">
+		<tr ng-repeat="row in paginated = (filteredRows = (rows | tableRowFilter:searchExpr | orderBy:orderId:orderReverse) | paginationFilter:currentPage:rowsPerPage) track by $index"
+			ng-class="{ 'active': isRowHighlighted(row) }">
 			<td ng-repeat="column in columns" ng-bind="row[column.id]"></td>
 		</tr>
 	</tbody>

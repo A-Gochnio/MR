@@ -11,8 +11,8 @@ angular.module('monterail.test').controller('LoginCtrl',
 		authService.loginUser($scope.username, $scope.password)
 			.then(function success(){
 				$state.go('table');
-			}, function fail(){
-				$scope.loginErrorMsg = 'Password is wrong. Should be: "monterail"';
+			}, function fail(reason){
+				$scope.loginErrorMsg = reason;
 			});
 	}
 		
